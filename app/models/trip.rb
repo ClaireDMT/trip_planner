@@ -6,4 +6,5 @@ class Trip < ApplicationRecord
   has_many :rentals, dependent: :destroy
   has_many :transits, dependent: :destroy
   has_many :expenses, dependent: :destroy
+  has_one_attached :photo
 end

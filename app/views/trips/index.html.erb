@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Trips</h1>
+
+  <ul>
+    <% @trips.each do |trip| %>
+      <%= link_to trip_path(trip)  do %>
+        <li>
+          <div class="card-trip">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <div class="card-trip-infos">
+              <h2><%= trip.name %></h2>
+              <p><%= trip.start_date.strftime("%d %b") %> - <%= trip.end_date.strftime("%d %b") %> <%= trip.end_date.strftime("%Y") %></p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

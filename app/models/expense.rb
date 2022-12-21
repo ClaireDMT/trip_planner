@@ -8,5 +8,5 @@ class Expense < ApplicationRecord
   belongs_to :category
 
   monetize :price_cents
-
+  has_many_attached :attachments
 end
