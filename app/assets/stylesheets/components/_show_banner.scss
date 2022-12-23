@@ -1,0 +1,64 @@
+.show-banner {
+
+  background-color: white;
+  .show-banner-image-container {
+    width: 100%;
+    top: 0;
+    height: 280px;
+  }
+
+  .show-banner-image {
+    height: 240px
+  }
+
+  .show-banner-trip-infos {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    margin: 0 auto;
+    padding: 16px;
+    bottom: 0;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  h1 {
+    color: $blue;
+    font-weight: bolder;
+  }
+
+  .show-banner-trip-infos-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bolder;
+  }
+
+  .show-banner-trip-infos-details-actions {
+    display: flex;
+    align-items: center;
+
+  }
+
+  .show-banner-trip-users {
+    display: flex;
+    justify-content: end;
+  }
+
+  .avatar {
+    margin-left: -25%
+  }
+
+  .avatar:first-child {
+    margin-left: 0;
+  }
+
+  .show-banner-button-actions  {
+    font-size: 1.5rem;
+  }
+}

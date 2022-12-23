@@ -1,0 +1,33 @@
+<section class="lodging-section mb-4">
+  <%= turbo_frame_tag "lodgings_turbo_frame" do %>
+
+    <div class="d-flex justify-content-between align-items-start">
+      <h2 class="mb-3 text-blue">Accomodations</h3>
+      <%= link_to new_trip_lodging_path(trip) do  %>
+        <span class="text-yellow fs-4"><i class="fa-solid fa-plus"></i></span>
+      <% end %>
+    </div>
+    <% if trip.lodgings.empty? %>
+      <%= render "lodgings/new", trip: trip, lodging: Lodging.new %>
+    <% else %>
+      <ul class="lodging-list">
+        <% trip.lodgings.each do |lodging| %>
+          <li class="bg-gray lodging">
+            <h3 class="text-blue fw-bolder"><%= lodging.name %></h3>
+            <div class="d-flex justify-content-between align-items-end">
+              <div>
+                <p class="text-small mb-1"><%= lodging.address %></p>
+                <p class="mb-0"><%= lodging.start_time.strftime("%a, %d %b") %> - <%= lodging.end_time.strftime("%a, %d %b") %></p>
+              </div>
+              <p class="mb-0"><i class="fa-solid fa-circle-chevron-down"></i></p>
+            </div>
+
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+
+  <% end %>
+
+</section>

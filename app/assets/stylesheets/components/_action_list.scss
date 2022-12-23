@@ -1,0 +1,27 @@
+.quick-add-section {
+  .add-list {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .button-action {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 56px;
+    width: 56px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
+
+  .button-action span {
+    margin-top: 8px;
+    font-size: 0.75rem;
+  }
+
+  .separator {
+    background-color: $dark-gray;
+    width: 1px
+  }
+}

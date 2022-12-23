@@ -1,0 +1,18 @@
+.show_tabs {
+  .nav {
+    background-color: white;
+    justify-content: space-around;
+  }
+
+  .nav-link {
+    font-weight: bolder;
+    color: $blue;
+  }
+
+  .nav-link.active {
+    background-color: white;
+    border: none;
+    border-bottom: 3px solid $yellow;
+
+  }
+}

@@ -1,0 +1,17 @@
+<div class="container">
+  <%= turbo_frame_tag "lodgings_turbo_frame" do %>
+
+    <%= simple_form_for [@trip, @lodging] do |f| %>
+      <%= f.input :name %>
+      <%= f.input :start_time %>
+      <%= f.input :end_time %>
+      <%= f.input :link %>
+      <%= f.input :address %>
+      <%= f.input :price_cents %>
+      <%= f.input :price_per_night_cents %>
+      <%= f.input :paid %>
+      <%= f.submit %>
+    <% end %>
+
+  <% end %>
+</div>

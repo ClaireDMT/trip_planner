@@ -1,0 +1,47 @@
+    <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+      <div class="bg-gray">
+        <section class="quick-add-section my-4">
+          <h3 class="mb-3 text-blue">Reservations and attachments</h3>
+          <ul class="add-list">
+            <li>
+              <div class="button-action" role="button">
+                <i class="fa-solid fa-train-subway"></i>
+                <span>Transport</span>
+              </div>
+            </li>
+            <div class="separator"></div>
+            <li>
+              <div class="button-action" role="button">
+                <i class="fa-solid fa-bed"></i>
+                <span>Lodging</span>
+              </div>
+            </li>
+            <div class="separator"></div>
+            <li>
+              <div class="button-action" role="button">
+                <i class="fa-solid fa-car"></i>
+                <span>Rental</span>
+              </div>
+            </li>
+            <div class="separator"></div>
+            <li>
+              <div class="button-action" role="button">
+                <i class="fa-solid fa-landmark"></i>
+                <span>Activity</span>
+              </div>
+            </li>
+            <div class="separator"></div>
+            <li>
+              <div class="button-action" role="button">
+                <i class="fa-solid fa-paperclip"></i>
+                <span>Attachment</span>
+              </div>
+            </li>
+          </ul>
+
+        </section>
+
+        <%= render "lodgings", trip: trip %>
+      </div>
+
+    </div>

@@ -11,6 +11,24 @@
 @import "components/index";
 @import "pages/index";
 
+body {
+  font-family: $body-font;
+  background-color: $dark-gray;
+}
+
+section {
+  background-color: white;
+  padding: 16px
+}
+
+h1, h2, h3 {
+  font-family: $headers-font
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
 a {
   text-decoration: none;
 }
@@ -19,4 +37,28 @@ ul {
   list-style: none;
   padding: 0;
   margin-bottom: 0;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-gray {
+  background-color: $dark-gray;
+}
+
+.text-small {
+  font-size: 0.75rem;
+}
+
+.text-gray {
+  color: $gray
+}
+
+.text-yellow {
+  color: $yellow
+}
+
+.text-blue {
+  color: $blue
 }
