@@ -41,7 +41,12 @@
 
         </section>
 
-        <%= render "lodgings", trip: trip %>
+        <%= render "lodgings/list", trip: trip %>
+        <%= render "transits/list", trip: trip %>
+        <%#= render "rentals/list", trip: trip %>
+        <%#= render "places/list", trip: trip %>
+
+
       </div>
 
     </div>

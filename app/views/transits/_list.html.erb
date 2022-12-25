@@ -1,0 +1,32 @@
+<section class="list-section mb-4">
+  <%= turbo_frame_tag "transits_turbo_frame" do %>
+
+    <div class="d-flex justify-content-between align-items-start">
+      <h2 class="mb-3 text-blue">Transits</h3>
+      <%= link_to new_trip_transit_path(trip) do  %>
+        <span class="text-yellow fs-4"><i class="fa-solid fa-plus"></i></span>
+      <% end %>
+    </div>
+    <% if trip.transits.empty? %>
+      <%= render "transits/form", trip: trip, transit: Transit.new %>
+    <% else %>
+      <ul class="transit-list">
+        <% trip.transits.each do |transit| %>
+          <li class="bg-gray transit">
+            <h3 class="text-blue fw-bolder"><%= transit.from %> to <%= transit.to %></h3>
+            <div class="d-flex justify-content-between align-items-end">
+              <div>
+                <p class="text-small mb-1"><%= transit.transport_type %></p>
+                <p class="mb-0"><%= transit.start_time.strftime("%a, %d %b") %> - <%= transit.end_time.strftime("%a, %d %b") %></p>
+              </div>
+              <p class="mb-0"><i class="fa-solid fa-circle-chevron-down"></i></p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+
+  <% end %>
+
+</section>

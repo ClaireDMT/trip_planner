@@ -8,7 +8,9 @@
   }
 
   .show-banner-image {
-    height: 240px
+    height: 240px;
+    width: 100%;
+    object-fit: cover;
   }
 
   .show-banner-trip-infos {
