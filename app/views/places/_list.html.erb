@@ -8,7 +8,7 @@
       <% end %>
     </div>
     <% if trip.places.empty? %>
-      <%= link_to "Add a new place", new_trip_place_path(trip)  %>
+      <p class="text-gray font-italic  mb-0">No places yet</p>
     <% else %>
       <ul class="place-list">
         <% trip.places.each do |place| %>

@@ -1,1 +1,3 @@
-<%= render "form", trip: @trip, lodging: @lodging  %>
+<%= turbo_frame_tag "lodgings_turbo_frame" do %>
+  <%= render "form", trip: @trip, lodging: @lodging  %>
+<% end %>

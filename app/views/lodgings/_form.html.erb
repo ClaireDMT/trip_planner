@@ -1,17 +1,13 @@
 <div class="container">
-  <%= turbo_frame_tag "lodgings_turbo_frame" do %>
-
-    <%= simple_form_for [@trip, @lodging], data: { controller: 'flatpickr' } do |f| %>
-      <%= f.input :name %>
-      <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
-      <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
-      <%= f.input :link %>
-      <%= f.input :address %>
-      <%= f.input :price_cents %>
-      <%= f.input :price_per_night_cents %>
-      <%= f.input :paid %>
-      <%= f.submit %>
-    <% end %>
-
+  <%= simple_form_for [@trip, @lodging], data: { controller: 'flatpickr' } do |f| %>
+    <%= f.input :name %>
+    <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+    <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
+    <%= f.input :link %>
+    <%= f.input :address %>
+    <%= f.input :price_cents %>
+    <%= f.input :price_per_night_cents %>
+    <%= f.input :paid %>
+    <%= f.submit %>
   <% end %>
 </div>

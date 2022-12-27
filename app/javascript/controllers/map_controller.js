@@ -17,7 +17,7 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10"
     })
     this.#addMarkersToMap()
-    const markers = this.rentalMarkersValue + this.placeMarkersValue + this.lodgingMarkersValue
+    const markers = this.rentalMarkersValue.concat(this.placeMarkersValue, this.lodgingMarkersValue)
     this.#fitMapToMarkers(markers)
 
   }
@@ -44,6 +44,7 @@ export default class extends Controller {
   }
 
   #fitMapToMarkers(markers) {
+    console.log(markers)
     const bounds = new mapboxgl.LngLatBounds()
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })

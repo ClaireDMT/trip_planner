@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "expense_#{exp.id}" do %>
+  <div class="container">
+    <%= simple_form_for [trip, expense], data: { controller: 'flatpickr' } do |f| %>
+      <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+      <%= f.input :price_cents %>
+      <%= f.input :user, collection: trip.users %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+<% end %>

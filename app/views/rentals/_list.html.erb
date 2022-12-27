@@ -4,11 +4,11 @@
     <div class="d-flex justify-content-between align-items-start">
       <h2 class="mb-3 text-blue">Rentals</h3>
       <%= link_to new_trip_rental_path(trip) do  %>
-        <span class="text-yellow fs-4"><i class="fa-sscolid fa-plus"></i></span>
+        <span class="text-yellow fs-4"><i class="fa-solid fa-plus"></i></span>
       <% end %>
     </div>
     <% if trip.rentals.empty? %>
-      <%= link_to "Add a new rental", new_trip_rental_path(trip)  %>
+      <p class="text-gray font-italic  mb-0">No rentals yet</p>
     <% else %>
       <ul class="rental-list">
         <% trip.rentals.each do |rental| %>
@@ -25,8 +25,6 @@
         <% end %>
       </ul>
     <% end %>
-
-
   <% end %>
 
 </section>

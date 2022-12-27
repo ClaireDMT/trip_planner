@@ -1,5 +1,17 @@
 <%= turbo_frame_tag :items do %>
   <div class="budget_banner">
-    <h1><%= trip.budget %></h1>
+    <h1><%= trip.budget %> €</h1>
   </div>
+
+  <ul>
+    <% trip.expenses do |exp| %>
+      <%= turbo_frame_tag "expense_#{exp.id}"  do %>
+        <li>
+          <%= link_to edit_expense_path(exp) do  %>
+
+          <% end %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
 <% end %>

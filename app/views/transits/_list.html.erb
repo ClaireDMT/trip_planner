@@ -8,8 +8,7 @@
       <% end %>
     </div>
     <% if trip.transits.empty? %>
-    <%= link_to "Add a new transit", new_transit_path(trip)  %>
-
+      <p class="text-gray font-italic  mb-0">No transits yet</p>
     <% else %>
       <ul class="transit-list">
         <% trip.transits.each do |transit| %>

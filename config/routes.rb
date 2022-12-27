@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "trips#index"
   resources :trips, only: [:show] do
-    resources :lodgings, only: [:new, :create]
-    resources :transits, only: [:new, :create]
-    resources :rentals, only: [:new, :create]
-    resources :places, only: [:new, :create]
-    resources :expenses, only: [:new, :create]
+    resources :lodgings, only: %i[new create]
+    resources :transits, only: %i[new create]
+    resources :rentals, only: %i[new create]
+    resources :places, only: %i[new create]
+    resources :expenses, only: %i[new create]
 
     member do
       get :map
@@ -16,5 +16,6 @@ Rails.application.routes.draw do
       get :budget
     end
   end
+  resources :expenses, only: %i[edit update]
   resources :lodgings, only: :delete
 end
