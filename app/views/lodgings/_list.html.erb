@@ -8,7 +8,7 @@
       <% end %>
     </div>
     <% if trip.lodgings.empty? %>
-      <%= render "lodgings/new", trip: trip, lodging: Lodging.new %>
+      <%= link_to "Add a new lodging", new_trip_lodging_path(trip)  %>
     <% else %>
       <ul class="lodging-list">
         <% trip.lodgings.each do |lodging| %>

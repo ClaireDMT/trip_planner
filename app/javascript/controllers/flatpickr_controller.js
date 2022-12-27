@@ -11,7 +11,7 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log(this.timeValue)
+    if (this.hasEndTimeTarget) {
       flatpickr(this.startTimeTarget, {
         enableTime: this.timeValue,
         dateFormat: "d-m-Y H:i",
@@ -20,5 +20,10 @@ export default class extends Controller {
           input: this.endTimeTarget
         })]
       });
+    } else {
+      flatpickr(this.startTimeTarget, {
+        dateFormat: "d-m-Y"
+      });
+    }
   }
 }

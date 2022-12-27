@@ -8,8 +8,15 @@ class LodgingsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @lodging = Lodging.new(lodging_params)
     @lodging.trip = @trip
+    @category = Category.find_by(name: "Lodging")
 
-    if @lodging.save!
+    if @lodging.save
+      Expense.create(
+        trip: @trip,
+        lodging: @lodging,
+        category: @category,
+        date: @lodging.start_time
+      )
       redirect_to trip_path(@trip)
     else
       render "trips/show"

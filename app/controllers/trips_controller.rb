@@ -1,18 +1,14 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: [:show, :map, :details]
+  before_action :set_trip, only: %i[show map details overview itinerary budget]
   def index
     @trips = current_user.trips
   end
-
-  def show; end
 
   def map
     @lodging_markers = markers(@trip.lodgings)
     @rental_markers = markers(@trip.rentals)
     @place_markers = markers(@trip.places)
   end
-
-  def details; end
 
   private
 

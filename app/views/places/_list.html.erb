@@ -1,0 +1,31 @@
+<section class="list-section mb-4">
+  <%= turbo_frame_tag "places_turbo_frame" do %>
+
+    <div class="d-flex justify-content-between align-items-start">
+      <h2 class="mb-3 text-blue">Places to visit</h3>
+      <%= link_to new_trip_place_path(trip) do  %>
+        <span class="text-yellow fs-4"><i class="fa-solid fa-plus"></i></span>
+      <% end %>
+    </div>
+    <% if trip.places.empty? %>
+      <%= link_to "Add a new place", new_trip_place_path(trip)  %>
+    <% else %>
+      <ul class="place-list">
+        <% trip.places.each do |place| %>
+          <li class="bg-gray place">
+            <h3 class="text-blue fw-bolder"><%= place.name %></h3>
+            <div class="d-flex justify-content-between align-items-end">
+              <div>
+                <p class="text-small mb-1"><%= place.address %></p>
+              </div>
+              <p class="mb-0"><i class="fa-solid fa-circle-chevron-down"></i></p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+
+  <% end %>
+
+</section>

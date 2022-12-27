@@ -42,6 +42,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_211022) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "attractions", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "icon"
@@ -92,15 +99,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_211022) do
   create_table "places", force: :cascade do |t|
     t.string "name"
     t.string "address"
+    t.datetime "date"
     t.float "longitude"
     t.float "latitude"
     t.boolean "paid", default: false
     t.bigint "trip_id", null: false
     t.integer "status"
     t.string "comment"
+    t.bigint "attraction_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
+    t.index ["attraction_id"], name: "index_places_on_attraction_id"
     t.index ["trip_id"], name: "index_places_on_trip_id"
   end
 
@@ -176,6 +186,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_211022) do
   add_foreign_key "expenses", "trips"
   add_foreign_key "expenses", "users"
   add_foreign_key "lodgings", "trips"
+  add_foreign_key "places", "attractions"
   add_foreign_key "places", "trips"
   add_foreign_key "rentals", "trips"
   add_foreign_key "transits", "trips"

@@ -18,8 +18,18 @@ CATEGORIES = [
   "Transportation",
   "Other"
 ]
-
+PLACE_CATEGORIES = [
+  "Museum",
+  "Parc and Garden",
+  "Natural Reserves",
+  "Religious Building",
+  "Beach",
+  "Town",
+  "Neighbourhood"
+]
 CATEGORIES.each { |cat| Category.create(name: cat) }
+PLACE_CATEGORIES.each { |cat| Attraction.create(name: cat) }
+p "Categories created"
 
 claire = User.new(email: "clair_demont@hotmail.com", password: "123456", username: "clarinette")
 claire_pic = URI.open("https://res.cloudinary.com/clairedmt/image/upload/v1671794271/smile.png")
@@ -36,10 +46,14 @@ trip = Trip.create(name: "Sunny Office", start_date: "Sun, 22 Jan 2022", end_dat
 trip.photo.attach(io: file, filename: "andalucia.jpg", content_type: "image/jpg")
 trip.save
 
+p "Users created"
+
 TripUser.create(trip:, user: claire)
 TripUser.create(trip:, user: yannick)
+category = Category.find_by(name: "Lodging")
 
-Lodging.create(
+
+lodging = Lodging.create(
   name: "El Tesorillo",
   link: "https://www.airbnb.com/rooms/15694960?adults=2&children=0&infants=0&location=Moj%C3%A1car%2C%20Espa%C3%B1a&pets=0&check_in=2023-05-19&check_out=2023-05-24&federated_search_id=0e84c867-88cd-41fe-8268-2909f10edfb9&source_impression_id=p3_1671531217_LSqZyIDDWAJ6yXrH",
   start_time: "Sun, 22 Jan 2022",
@@ -47,12 +61,25 @@ Lodging.create(
   address: "Guájar-Alto, Andalucía, Spain",
   trip:
 )
+Expense.create(
+  trip:,
+  lodging:,
+  category:,
+  date: lodging.start_time
+)
 
-Lodging.create(
+lodging = Lodging.create(
   name: "La Isla Bonita - Mojacar house on the hill",
   link: "https://www.airbnb.com/rooms/34787366?adults=2&location=Moj%C3%A1car%2C%20Espa%C3%B1a&check_in=2023-01-21&check_out=2023-01-30&federated_search_id=742f3b5f-a8ab-4d58-93c9-d26ad370da64&source_impression_id=p3_1671530118_LfPkPNI%2FepXf%2BKGK",
   start_time: "Mond, 30 Jan 2022",
   end_time: "Tues, 07 Feb 2022",
   address: "Mojácar, Almería, Spain",
   trip:
+)
+
+Expense.create(
+  trip:,
+  lodging:,
+  category:,
+  date: lodging.start_time
 )

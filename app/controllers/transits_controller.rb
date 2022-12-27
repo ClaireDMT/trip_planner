@@ -8,8 +8,15 @@ class TransitsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @transit = Transit.new(transit_params)
     @transit.trip = @trip
+    @category = Category.find_by(name: "Transportation")
 
-    if @transit.save!
+    if @transit.save
+      Expense.create(
+        trip: @trip,
+        transit: @transit,
+        category: @category,
+        date: @transit.start_time
+      )
       redirect_to trip_path(@trip)
     else
       render "trips/show"

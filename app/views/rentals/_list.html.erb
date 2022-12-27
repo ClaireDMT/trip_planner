@@ -1,0 +1,32 @@
+<section class="list-section mb-4">
+  <%= turbo_frame_tag "rentals_turbo_frame" do %>
+
+    <div class="d-flex justify-content-between align-items-start">
+      <h2 class="mb-3 text-blue">Rentals</h3>
+      <%= link_to new_trip_rental_path(trip) do  %>
+        <span class="text-yellow fs-4"><i class="fa-sscolid fa-plus"></i></span>
+      <% end %>
+    </div>
+    <% if trip.rentals.empty? %>
+      <%= link_to "Add a new rental", new_trip_rental_path(trip)  %>
+    <% else %>
+      <ul class="rental-list">
+        <% trip.rentals.each do |rental| %>
+          <li class="bg-gray rental">
+            <h3 class="text-blue fw-bolder"><%= rental.rental_type %></h3>
+            <div class="d-flex justify-content-between align-items-end">
+              <div>
+                <p class="text-small mb-1"><%= rental.address %></p>
+                <p class="mb-0"><%= rental.start_time.strftime("%a, %d %b") %> - <%= rental.end_time.strftime("%a, %d %b") %></p>
+              </div>
+              <p class="mb-0"><i class="fa-solid fa-circle-chevron-down"></i></p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+
+  <% end %>
+
+</section>

@@ -1,24 +1,23 @@
 <%= turbo_frame_tag "show_content" do %>
   <%= render "show_banner", trip: @trip %>
 
-  <div class="show_tabs">
+  <div class="show_tabs" data-controller="tabs">
     <ul class="nav nav-tabs container pt-4" id="tripShow" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">Overview</button>
+        <%= link_to "Overview", overview_trip_path(@trip), class: "active nav-link",
+                    data: { turbo_frame: :items, tabs_target: "tab", action: "click->tabs#toggle" } %>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="itinerary-tab" data-bs-toggle="tab" data-bs-target="#itinerary" type="button" role="tab" aria-controls="itinerary" aria-selected="false">Itinerary</button>
+        <%= link_to "Itinerary", itinerary_trip_path(@trip), class: "nav-link",
+                    data: { turbo_frame: :items, tabs_target: "tab", action: "click->tabs#toggle" } %>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="budget-tab" data-bs-toggle="tab" data-bs-target="#budget" type="button" role="tab" aria-controls="budget" aria-selected="false">Budget</button>
+        <%= link_to "Expenses", budget_trip_path(@trip), class: "nav-link",
+                    data: { turbo_frame: :items, tabs_target: "tab", action: "click->tabs#toggle" } %>
       </li>
     </ul>
-
-
-    <div class="tab-content" id="tripShowContent">
-      <%= render "overview", trip: @trip %>
-      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">other</div>
-      <div class="tab-pane fade" id="budget" role="tabpanel" aria-labelledby="budget-tab">budget</div>
-    </div>
   </div>
+  <%= turbo_frame_tag :items, src: overview_trip_path(@trip) do %>
+    <p>Loading...</p>
+  <% end %>
 <% end %>
