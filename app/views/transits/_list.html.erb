@@ -1,12 +1,11 @@
 <section class="list-section mb-4">
+  <div class="d-flex justify-content-between align-items-start">
+    <h2 class="mb-3 text-blue">Transits</h3>
+    <%= link_to new_trip_transit_path(trip), data: { turbo_frame: "transits_turbo_frame" } do  %>
+      <span class="text-yellow fs-4"><i class="fa-solid fa-plus"></i></span>
+    <% end %>
+  </div>
   <%= turbo_frame_tag "transits_turbo_frame" do %>
-
-    <div class="d-flex justify-content-between align-items-start">
-      <h2 class="mb-3 text-blue">Transits</h3>
-      <%= link_to new_trip_transit_path(trip) do  %>
-        <span class="text-yellow fs-4"><i class="fa-solid fa-plus"></i></span>
-      <% end %>
-    </div>
     <% if trip.transits.empty? %>
       <p class="text-gray font-italic  mb-0">No transits yet</p>
     <% else %>
@@ -25,8 +24,5 @@
         <% end %>
       </ul>
     <% end %>
-
-
   <% end %>
-
 </section>

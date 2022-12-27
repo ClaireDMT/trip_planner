@@ -1,6 +1,4 @@
 <div class="container">
-  <%= turbo_frame_tag "transits_turbo_frame" do %>
-
     <%= simple_form_for [trip, place], data: { controller: 'flatpickr', flatpickr_time_value: true } do |f| %>
       <%= f.input :name %>
       <%= f.input :address, input_html: { data: { address_autocomplete_target: "address"}, class: "d-none" },
@@ -10,8 +8,8 @@
       <%= f.input :price_cents %>
       <%= f.input :paid %>
       <%= f.input :comment %>
-      <%= f.submit %>
+      <div class="text-center">
+        <%= f.submit "Add", class: "btn btn-blue" %>
+      </div>
     <% end %>
-
-  <% end %>
 </div>

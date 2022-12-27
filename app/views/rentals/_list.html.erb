@@ -1,14 +1,13 @@
 <section class="list-section mb-4">
+  <div class="d-flex justify-content-between align-items-start">
+    <h2 class="mb-3 text-blue">Rentals</h3>
+    <%= link_to new_trip_rental_path(trip), data: { turbo_frame: "rentals_turbo_frame" } do  %>
+      <span class="text-yellow fs-4"><i class="fa-solid fa-plus"></i></span>
+    <% end %>
+  </div>
   <%= turbo_frame_tag "rentals_turbo_frame" do %>
-
-    <div class="d-flex justify-content-between align-items-start">
-      <h2 class="mb-3 text-blue">Rentals</h3>
-      <%= link_to new_trip_rental_path(trip) do  %>
-        <span class="text-yellow fs-4"><i class="fa-solid fa-plus"></i></span>
-      <% end %>
-    </div>
     <% if trip.rentals.empty? %>
-      <p class="text-gray font-italic  mb-0">No rentals yet</p>
+      <p class="text-gray font-italic mb-0">No rentals yet</p>
     <% else %>
       <ul class="rental-list">
         <% trip.rentals.each do |rental| %>
@@ -26,5 +25,4 @@
       </ul>
     <% end %>
   <% end %>
-
 </section>
