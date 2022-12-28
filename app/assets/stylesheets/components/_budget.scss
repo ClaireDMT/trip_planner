@@ -1,3 +1,31 @@
 .budget_banner {
   padding: 4rem 2rem;
+  background-color: $blue;
+  color: $yellow;
+  text-align: center;
+}
+
+.budget {
+  border-radius: 8px 8px 0 0;
+  background-color: white;
+  margin-top: -16px;
+
+  li .container > div {
+    border-bottom: 1px solid $light-gray;
+  }
+  .expense-category {
+    background-color: $yellow;
+    color: $blue;
+    padding: 16px;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .expense-right p {
+    font-size: 1.25rem;
+  }
 }
