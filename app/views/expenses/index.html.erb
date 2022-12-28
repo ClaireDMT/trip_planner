@@ -1,0 +1,38 @@
+<%= turbo_frame_tag :items do %>
+  <div class="container budget_banner">
+    <h1><%= @trip.budget %> €</h1>
+  </div>
+
+  <ul class="budget list-section">
+    <div class="container py-3 d-flex justify-content-between align-items-center">
+      <h1>Expenses</h1>
+      <i class="fa-solid fa-chart-simple"></i>
+    </div>
+    <% @expenses.each do |exp| %>
+      <%= turbo_frame_tag "expense_#{exp.id}"  do %>
+        <li class="p-0">
+          <%= link_to edit_expense_path(exp) do  %>
+            <div class="container">
+              <div class="d-flex py-2 justify-content-between align-items-center">
+                <div class="expense-left">
+                  <div class="d-flex align-items-center justify-content-center">
+                    <div class="expense-category">
+                      <i class="fa-solid <%= exp.category.icon %>"></i>
+                    </div>
+                    <div class="ms-4">
+                      <p class="fw-bold mb-1"><%= exp.comment %></p>
+                      <p class="mb-0"><%= exp.date.strftime("%d %b")  %></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="expense-right">
+                  <p class="mb-0"><%= exp.price_cents %>€</p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>

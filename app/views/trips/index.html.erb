@@ -6,7 +6,7 @@
       <%= link_to trip_path(trip)  do %>
         <li>
           <div class="card-trip">
-            <%= cl_image_tag trip.photo.key %>
+            <%#= cl_image_tag trip.photo.key %>
             <div class="card-trip-infos">
               <h2><%= trip.name %></h2>
               <p><%= trip.start_date.strftime("%d %b") %> - <%= trip.end_date.strftime("%d %b") %> <%= trip.end_date.strftime("%Y") %></p>

@@ -2,7 +2,9 @@
     <%= simple_form_for [trip, expense], data: { controller: 'flatpickr' } do |f| %>
       <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
       <%= f.input :price_cents %>
-      <%= f.input :user, collection: trip.users %>
-    <%= f.submit "Add", class: "btn btn-blue" %>
+      <%= f.association :user, collection: @expense.trip.users, label_method: :username,  value_method: :id, include_blank: false %>
+      <div class="text-center">
+        <%= f.submit "Add", class: "btn btn-blue" %>
+      </div>
     <% end %>
   </div>

@@ -12,7 +12,7 @@
                     data: { turbo_frame: :items, tabs_target: "tab", action: "click->tabs#toggle" } %>
       </li>
       <li class="nav-item" role="presentation">
-        <%= link_to "Expenses", budget_trip_path(@trip), class: "nav-link",
+        <%= link_to "Expenses", trip_expenses_path(@trip), class: "nav-link",
                     data: { turbo_frame: :items, tabs_target: "tab", action: "click->tabs#toggle" } %>
       </li>
     </ul>

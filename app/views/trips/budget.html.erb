@@ -1,14 +1,29 @@
 <%= turbo_frame_tag :items do %>
   <div class="budget_banner">
-    <h1><%= trip.budget %> €</h1>
+    <h1><%= @trip.budget %> €</h1>
+    <%= raise %>
+    <% @trip.balance.each do |contribution| %>
+      <div class="d-flex justify-content-center">
+        <p><%= contribution["username"] %></p>
+        <p><%= contribution["sum"] %> €</p>
+      </div>
+    <% end %>
   </div>
 
   <ul>
-    <% trip.expenses do |exp| %>
+    <% @expenses.each do |exp| %>
       <%= turbo_frame_tag "expense_#{exp.id}"  do %>
         <li>
           <%= link_to edit_expense_path(exp) do  %>
-
+            <div class="d-flex justify-content-center">
+              <div class="expense-left">
+                <%= exp.category %>
+                <p class="text-small mb-1"><%= exp.date.strftime("%d %b")  %></p>
+              </div>
+              <div class="expense-right">
+                <p><%= exp.price_cents %>€</p>
+              </div>
+            </div>
           <% end %>
         </li>
       <% end %>
