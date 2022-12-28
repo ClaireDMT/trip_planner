@@ -10,6 +10,8 @@ class TripsController < ApplicationController
     @place_markers = markers(@trip.places)
   end
 
+  def budget;  end
+
   private
 
   def set_trip

@@ -1,6 +1,6 @@
 class Expense < ApplicationRecord
-  belongs_to :user
   belongs_to :trip
+  belongs_to :user, optional: true
   belongs_to :transit, optional: true
   belongs_to :lodging, optional: true
   belongs_to :rental, optional: true

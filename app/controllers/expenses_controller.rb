@@ -3,7 +3,7 @@ class ExpensesController < ApplicationController
 
   def index
     @trip = Trip.includes(:expenses).find(params[:trip_id])
-    @expenses = @trip.expenses
+    @expenses = @trip.expenses.order(date: :desc)
   end
 
   def update
@@ -14,7 +14,7 @@ class ExpensesController < ApplicationController
   private
 
   def set_expense
-    @expense = Expense.includes(:user, :trip, :lodging, :transit, :place, :rental).find(params[:id])
+    @expense = Expense.includes(:user, :lodging, :transit, :place, :rental, [trip: [trip_users: :user]]).find(params[:id])
   end
 
   def expense_params
