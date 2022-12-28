@@ -1,6 +1,6 @@
 <div class="show-banner">
   <div class="show-banner-image-container position-relative">
-    <%#= cl_image_tag trip.photo.key, class: "show-banner-image" %>
+    <%= cl_image_tag trip.photo.key, class: "show-banner-image" %>
     <div class="show-banner-trip-infos">
       <h1><%= trip.name %></h1>
       <div class="show-banner-trip-infos-details">
@@ -8,7 +8,7 @@
         <div class="show-banner-trip-infos-details-actions">
           <div class="show-banner-trip-users me-3">
             <% trip.users.each do |user| %>
-              <%#= cl_image_tag user.photo.key, class: "avatar avatar-bordered" %>
+              <%= cl_image_tag user.photo.key, class: "avatar avatar-bordered" %>
             <% end %>
           </div>
           <div class="show-banner-button-actions text-yellow"><i class="fa-solid fa-ellipsis"></i></div>
