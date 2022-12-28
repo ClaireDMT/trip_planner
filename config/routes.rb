@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :transits, only: %i[new create]
     resources :rentals, only: %i[new create]
     resources :places, only: %i[new create]
-    resources :expenses, only: %i[new create]
+    resources :expenses, only: %i[index new create]
 
     member do
       get :map

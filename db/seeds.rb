@@ -1,22 +1,23 @@
 require "open-uri"
 Category.destroy_all
+Attraction.destroy_all
 Trip.destroy_all
 User.destroy_all
 
 p "Destroyed all"
 
 CATEGORIES = [
-  "Flight",
-  "Lodging",
-  "Rental",
-  "Restaurant",
-  "Bar",
-  "Museums",
-  "Groceries",
-  "Gas",
-  "Shopping",
-  "Transportation",
-  "Other"
+  ["Flight", "fa-plane"],
+  ["Lodging", "fa-bed"],
+  ["Rental", "fa-car"],
+  ["Restaurant", "fa-ustensils"],
+  ["Bar", "fa-wine-glass"],
+  ["Museums", "fa-building-columns"],
+  ["Groceries", "fa-basket-shopping"],
+  ["Gas", "fa-gas-pump"],
+  ["Shopping", "fa-bag-shopping"],
+  ["Transportation", "fa-train-subway"],
+  ["Other", "fa-receipt"]
 ]
 PLACE_CATEGORIES = [
   "Museum",
@@ -27,7 +28,7 @@ PLACE_CATEGORIES = [
   "Town",
   "Neighbourhood"
 ]
-CATEGORIES.each { |cat| Category.create(name: cat) }
+CATEGORIES.each { |cat| Category.create(name: cat[0], icon: cat[1]) }
 PLACE_CATEGORIES.each { |cat| Attraction.create(name: cat) }
 p "Categories created"
 
@@ -41,31 +42,46 @@ yannick_pic = URI.open("https://res.cloudinary.com/clairedmt/image/upload/v16717
 yannick.photo.attach(io: yannick_pic, filename: "yannick.png", content_type: "image/png")
 yannick.save
 
+jesus = User.create(email: "jesus@web.de", password: "123456", username: "jesus")
+jesus_pic = URI.open("https://res.cloudinary.com/clairedmt/image/upload/v1671794394/annoyed.png")
+jesus.photo.attach(io: jesus_pic, filename: "yannick.png", content_type: "image/png")
+jesus.save
+p "Users created"
+
 file = URI.open("https://www.gannett-cdn.com/-mm-/a43ed58860e0a70c15ac14578720d373d70e242c/c=0-0-1798-1016/local/-/media/2019/01/04/USATODAY/USATODAY/636822059867874249-spain-zahara-overview-town-110118-rs.jpg")
 trip = Trip.create(name: "Sunny Office", start_date: "Sun, 22 Jan 2022", end_date: "Sun, 12 March 2022")
 trip.photo.attach(io: file, filename: "andalucia.jpg", content_type: "image/jpg")
 trip.save
 
-p "Users created"
+trip2 = Trip.create(name: "Jesus Pilgrimage", start_date: "Mon, 01 Jan 2023", end_date: "Tues, 02 Jan 2023")
 
 TripUser.create(trip:, user: claire)
 TripUser.create(trip:, user: yannick)
+TripUser.create(trip: trip2, user: jesus)
+TripUser.create(trip: trip2, user: claire)
+
+p "Trips created"
+
 category = Category.find_by(name: "Lodging")
-
-
 lodging = Lodging.create(
   name: "El Tesorillo",
   link: "https://www.airbnb.com/rooms/15694960?adults=2&children=0&infants=0&location=Moj%C3%A1car%2C%20Espa%C3%B1a&pets=0&check_in=2023-05-19&check_out=2023-05-24&federated_search_id=0e84c867-88cd-41fe-8268-2909f10edfb9&source_impression_id=p3_1671531217_LSqZyIDDWAJ6yXrH",
   start_time: "Sun, 22 Jan 2022",
   end_time: "Mon, 30 Jan 2022",
   address: "Guájar-Alto, Andalucía, Spain",
-  trip:
+  trip:,
+  price_cents: 200
 )
-Expense.create(
+
+
+Expense.create!(
+  user: claire,
   trip:,
   lodging:,
   category:,
-  date: lodging.start_time
+  date: lodging.start_time,
+  price_cents: 200,
+  comment: lodging.name
 )
 
 lodging = Lodging.create(
@@ -74,12 +90,37 @@ lodging = Lodging.create(
   start_time: "Mond, 30 Jan 2022",
   end_time: "Tues, 07 Feb 2022",
   address: "Mojácar, Almería, Spain",
-  trip:
+  trip:,
+  price_cents: 100,
 )
 
-Expense.create(
+Expense.create!(
+  user: yannick,
   trip:,
   lodging:,
   category:,
-  date: lodging.start_time
+  date: lodging.start_time,
+  price_cents: 100,
+  comment: lodging.name
+)
+
+# for test
+
+lodging_jesus = Lodging.create(
+  name: "El BLALA",
+  link: "https://www.airbnb.com/rooms/15694960?adults=2&children=0&infants=0&location=Moj%C3%A1car%2C%20Espa%C3%B1a&pets=0&check_in=2023-05-19&check_out=2023-05-24&federated_search_id=0e84c867-88cd-41fe-8268-2909f10edfb9&source_impression_id=p3_1671531217_LSqZyIDDWAJ6yXrH",
+  start_time: "Mond, 01 Jan 2023",
+  end_time: "Tues, 02 Jan 2023",
+  address: "Cordoba, Andalucía, Spain",
+  trip:,
+  price_cents: 50
+)
+
+Expense.create!(
+  trip: trip2,
+  lodging: lodging_jesus,
+  category:,
+  date: lodging_jesus.start_time,
+  price_cents: 50,
+  comment: lodging_jesus.name
 )

@@ -58,11 +58,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_211022) do
 
   create_table "expenses", force: :cascade do |t|
     t.bigint "trip_id", null: false
-    t.bigint "user_id", null: false
-    t.bigint "transit_id", null: false
-    t.bigint "lodging_id", null: false
-    t.bigint "rental_id", null: false
-    t.bigint "place_id", null: false
+    t.bigint "user_id"
+    t.bigint "transit_id"
+    t.bigint "lodging_id"
+    t.bigint "rental_id"
+    t.bigint "place_id"
     t.bigint "category_id", null: false
     t.datetime "date"
     t.integer "split"
