@@ -54,6 +54,9 @@ trip.photo.attach(io: file, filename: "andalucia.jpg", content_type: "image/jpg"
 trip.save
 
 trip2 = Trip.create(name: "Jesus Pilgrimage", start_date: "Mon, 01 Jan 2023", end_date: "Tues, 02 Jan 2023")
+file = URI.open("https://i.ytimg.com/vi/I12pHLv0OBA/maxresdefault.jpg")
+trip2.photo.attach(io: file, filename: "jesus.jpg", content_type: "image/jpg")
+trip.save
 
 TripUser.create(trip:, user: claire)
 TripUser.create(trip:, user: yannick)
