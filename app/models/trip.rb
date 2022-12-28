@@ -13,12 +13,10 @@ class Trip < ApplicationRecord
   end
 
   def balance
-    query = "SELECT users.username, SUM(price_cents) FROM expenses
-    JOIN trips ON expenses.trip_id = trips.id
-    JOIN trip_users ON trip_users.trip_id = trips.id
-    JOIN users ON trip_users.user_id = users.id
+    query = "SELECT users.username, SUM(expenses.price_cents) FROM expenses
+    INNER JOIN users ON expenses.user_id = users.id
     WHERE expenses.trip_id = #{id}
-    GROUP BY users.username"
+    group by 1"
     ActiveRecord::Base.connection.exec_query(query, "SQL").to_a
   end
 

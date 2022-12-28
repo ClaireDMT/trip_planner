@@ -1,8 +1,12 @@
 .budget_banner {
-  padding: 4rem 2rem;
+  padding: 3rem 2rem;
   background-color: $blue;
   color: $yellow;
   text-align: center;
+
+  p {
+    font-style: italic;
+  }
 }
 
 .budget {

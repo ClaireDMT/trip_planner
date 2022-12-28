@@ -1,6 +1,9 @@
 <%= turbo_frame_tag :items do %>
   <div class="container budget_banner">
-    <h1><%= @trip.budget %> €</h1>
+    <h1 class="mt-0 mb-3"><%= @trip.budget %> €</h1>
+    <% @trip.balance.each do |contribution| %>
+      <p class="m-1 font-italic"><%= contribution["username"] %> <%= contribution["sum"] %> €</p>
+    <% end %>
   </div>
 
   <ul class="budget list-section">

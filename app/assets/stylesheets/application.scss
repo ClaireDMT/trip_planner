@@ -33,8 +33,9 @@ h3 {
   font-size: 1.25rem;
 }
 
-a {
+a, a.nav-link {
   text-decoration: none;
+  font-style: normal;
 }
 
 ul {
