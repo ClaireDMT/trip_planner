@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+  get "profile", to: "pages#profile"
   resources :trips, only: %i[show index new create] do
     resources :lodgings, only: %i[new create]
     resources :transits, only: %i[new create]

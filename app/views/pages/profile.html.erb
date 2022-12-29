@@ -1,0 +1,7 @@
+<div class="container">
+  <%= cl_image_tag current_user.photo.key, class: "avatar avatar-bordered avatar-large" %>
+
+  <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete},
+  class: "" %>
+
+</div>
