@@ -1,7 +1,9 @@
-<div class="container">
-  <h1>Trips</h1>
+<div class="container pt-5">
+  <h1 class="text-blue" ><%= current_user.username.capitalize %>,
+    <span style = "display: block;">your next trip is in <%= current_user.next_trip_in %> days.</span>
+  </h1>
 
-  <ul>
+  <ul class="mt-4">
     <% @trips.each do |trip| %>
       <%= link_to trip_path(trip)  do %>
         <li class="mb-4">

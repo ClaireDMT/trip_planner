@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[show map details overview itinerary budget]
   def index
-    @trips = current_user.trips
+    @trips = current_user.future_trips.order(start_date: :desc)
   end
 
   def map
