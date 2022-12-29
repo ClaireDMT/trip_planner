@@ -1,2 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="home-background">
+  <%= image_tag "walking_city.avif" %>
+  <div class="container home-banner-top position-fixed">
+    <h1>Plan your trip,
+      <span style = "display: block;">relax your mind</span>
+    </h1>
+  </div>
+
+  <div class="container home-banner-bottom position-fixed">
+    <h3>Gather all your reservations, places to visit and keep on eye on your budget with your friends.</h3>
+    <div class="justify-content-center d-flex mt-3">
+      <%= link_to "Start planning", trips_path , class: "btn btn-blue btn-large" %>
+    </div>
+  </div>
+</div>

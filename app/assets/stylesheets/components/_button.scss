@@ -18,6 +18,18 @@
   display: flex;
 }
 
+.btn-yellow {
+  padding: 16px 24px;
+  border-radius: 8px;
+  background-color: $yellow;
+  border: 2px solid $blue;
+  border-bottom-width: 4px;
+  border-right-width: 4px;
+  color: $blue;
+  display: inline-block;
+  min-width: 140px;
+}
+
 .btn-blue {
   padding: 16px 24px;
   border-radius: 8px;
@@ -28,4 +40,8 @@
   color: $yellow;
   display: inline-block;
   min-width: 140px;
+}
+
+.btn-large {
+  width: 100%
 }
