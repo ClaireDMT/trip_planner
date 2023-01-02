@@ -1,11 +1,17 @@
 class PlacesController < ApplicationController
+  before_action :set_place, only: %i[edit update]
+
   def new
     @trip = Trip.find(params[:trip_id])
     @place = Place.new
   end
 
+  def update
+    @place.update(place_params)
+    redirect_to trip_path(@place.trip)
+  end
+
   def create
-    raise
     @trip = Trip.find(params[:trip_id])
     @place = Place.new(place_params)
     @place.trip = @trip
@@ -24,6 +30,10 @@ class PlacesController < ApplicationController
   end
 
   private
+
+  def set_place
+    @place = Place.find(params[:id])
+  end
 
   def place_params
     params.require(:place).permit(:name, :status, :paid, :address, :price_cents, :comment)

@@ -1,7 +1,14 @@
 class RentalsController < ApplicationController
+  before_action :set_rental, only: %i[edit update]
+
   def new
     @trip = Trip.find(params[:trip_id])
     @rental = Rental.new
+  end
+
+  def update
+    @rental.update(rental_params)
+    redirect_to trip_path(@rental.trip)
   end
 
   def create
@@ -24,6 +31,10 @@ class RentalsController < ApplicationController
   end
 
   private
+
+  def set_rental
+    @rental = Rental.find(params[:id])
+  end
 
   def rental_params
     params.require(:rental).permit(:rental_type, :paid, :start_time, :end_time, :address, :price_cents, :comment)

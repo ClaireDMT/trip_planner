@@ -1,7 +1,15 @@
 class LodgingsController < ApplicationController
+  before_action :set_lodging, only: %i[edit update]
+
   def new
     @trip = Trip.find(params[:trip_id])
     @lodging = Lodging.new
+  end
+
+  def update
+    @trip = @lodging.trip
+    @lodging.update(lodging_params)
+    redirect_to restaurant_path(@trip)
   end
 
   def create
@@ -24,6 +32,10 @@ class LodgingsController < ApplicationController
   end
 
   private
+
+  def set_lodging
+    @lodging = Lodging.find(params[:id])
+  end
 
   def lodging_params
     params.require(:lodging).permit(:name, :link, :paid, :start_time, :end_time, :address, :price_cents, :price_per_night_cents)

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       get :budget
     end
   end
-  resources :expenses, only: %i[edit update]
-  resources :lodgings, only: :delete
+  resources :expenses, only: %i[edit update delete]
+  resources :lodgings, only: %i[edit update delete]
+  resources :transits, only: %i[edit update delete]
+  resources :rentals, only: %i[edit update delete]
 end

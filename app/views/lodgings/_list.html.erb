@@ -11,17 +11,20 @@
     <% else %>
       <ul class="lodging-list">
         <% trip.lodgings.each do |lodging| %>
-          <li class="bg-gray lodging">
-            <h3 class="text-blue fw-bolder"><%= lodging.name %></h3>
-            <div class="d-flex justify-content-between align-items-end">
-              <div>
-                <p class="text-small mb-1"><%= lodging.address %></p>
-                <p class="mb-0"><%= lodging.start_time.strftime("%a, %d %b") %> - <%= lodging.end_time.strftime("%a, %d %b") %></p>
-              </div>
-              <p class="mb-0"><i class="fa-solid fa-circle-chevron-down"></i></p>
-            </div>
-
-          </li>
+          <%= turbo_frame_tag "lodging_#{lodging.id}"  do %>
+            <li class="bg-gray lodging">
+              <%= link_to edit_lodging_path(lodging) do  %>
+                <h3 class="text-blue fw-bolder"><%= lodging.name %></h3>
+                <div class="d-flex justify-content-between align-items-end">
+                  <div>
+                    <p class="text-small mb-1"><%= lodging.address %></p>
+                    <p class="mb-0"><%= lodging.start_time.strftime("%a, %d %b") %> - <%= lodging.end_time.strftime("%a, %d %b") %></p>
+                  </div>
+                  <p class="mb-0"><i class="fa-solid fa-circle-chevron-down"></i></p>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
         <% end %>
       </ul>
     <% end %>
