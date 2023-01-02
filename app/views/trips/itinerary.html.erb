@@ -1,3 +1,9 @@
 <%= turbo_frame_tag :items do %>
-  <h2>Itinerary</h2>
+  <div class="day-list d-flex overflow-scroll py-3">
+    <% (@trip.start_date.to_datetime..@trip.end_date.to_datetime).each do |day| %>
+      <div class="day">
+        <span><%= day.strftime("%a %d/%m") %></span>
+      </div>
+    <% end %>
+  </div>
 <% end %>
