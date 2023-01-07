@@ -12,7 +12,8 @@
       <%= f.input :price_cents %>
       <%= f.input :paid %>
       <%= f.input :comment %>
-      <%= f.submit %>
+      <%= f.input :attachments, as: :file, input_html: { multiple: true } %>
+      <%= f.submit "Add", class: "btn btn-blue" %>
     <% end %>
 
   <% end %>

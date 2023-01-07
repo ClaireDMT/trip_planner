@@ -1,5 +1,8 @@
 <div class="show-banner">
   <div class="show-banner-image-container position-relative">
+    <%= link_to trips_path, class: "back-link position-absolute" do %>
+      <i class="fa-solid fa-house text-yellow"></i>
+    <% end %>
     <%= cl_image_tag trip.photo.key, class: "show-banner-image" %>
     <div class="show-banner-trip-infos">
       <h1><%= trip.name %></h1>

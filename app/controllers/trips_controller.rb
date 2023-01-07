@@ -10,6 +10,10 @@ class TripsController < ApplicationController
     @place_markers = markers(@trip.places)
   end
 
+  def itinerary
+    @days = @trip.start_date.to_datetime..@trip.end_date.to_datetime
+  end
+
   private
 
   def set_trip

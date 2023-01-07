@@ -1,9 +1,23 @@
 <%= turbo_frame_tag :items do %>
   <div class="day-list d-flex overflow-scroll py-3">
-    <% (@trip.start_date.to_datetime..@trip.end_date.to_datetime).each do |day| %>
+    <% @days.each do |day| %>
       <div class="day">
         <span><%= day.strftime("%a %d/%m") %></span>
       </div>
     <% end %>
   </div>
+
+  <ul class="itinerary-days">
+    <% @days.each do |day| %>
+      <li class="bg-white mb-4 py-4" >
+        <div class="container px-4">
+          <h2 class="fw-bold mb-4"><%= day.strftime("%a %d/%m") %></h2>
+          <%= simple_form_for [@trip, Place.new] do |f| %>
+            <%= f.input :address, placeholder: "Add a place", label: false %>
+          <% end %>
+        </div>
+
+      </li>
+    <% end %>
+  </ul>
 <% end %>

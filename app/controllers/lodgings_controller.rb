@@ -38,6 +38,14 @@ class LodgingsController < ApplicationController
   end
 
   def lodging_params
-    params.require(:lodging).permit(:name, :link, :paid, :start_time, :end_time, :address, :price_cents, :price_per_night_cents)
+    params.require(:lodging).permit(:name,
+                                    :link,
+                                    :paid,
+                                    :start_time,
+                                    :end_time,
+                                    :address,
+                                    :price_cents,
+                                    :price_per_night_cents,
+                                    attachments: [])
   end
 end

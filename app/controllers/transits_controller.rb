@@ -37,6 +37,14 @@ class TransitsController < ApplicationController
   end
 
   def transit_params
-    params.require(:transit).permit(:from, :to, :paid, :start_time, :end_time, :transport_type, :price_cents, :comment)
+    params.require(:transit).permit(:from,
+                                    :to,
+                                    :paid,
+                                    :start_time,
+                                    :end_time,
+                                    :transport_type,
+                                    :price_cents,
+                                    :comment,
+                                    attachments: [])
   end
 end
