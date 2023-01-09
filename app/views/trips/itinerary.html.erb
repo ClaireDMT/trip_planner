@@ -6,17 +6,22 @@
       </div>
     <% end %>
   </div>
-
+  <% console %>
   <ul class="itinerary-days">
     <% @days.each do |day| %>
       <li class="bg-white mb-4 py-4" >
         <div class="container px-4">
           <h2 class="fw-bold mb-4"><%= day.strftime("%a %d/%m") %></h2>
-          <%= simple_form_for [@trip, Place.new] do |f| %>
+          <% lodging = @trip.lodgings.where("? between start_time AND end_time", day).first %>
+            <% if lodging %>
+              <div class="bg-blue ps-2 py-1 radius-8 mb-2">
+                <p class="text-white mb-0"><%= lodging.name %></p>
+              </div>
+            <% end %>
+          <%= simple_form_for [@trip, Place.new], html: { class: "mt-2"} do |f| %>
             <%= f.input :address, placeholder: "Add a place", label: false %>
           <% end %>
         </div>
-
       </li>
     <% end %>
   </ul>
