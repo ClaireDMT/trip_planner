@@ -22,6 +22,7 @@ class TransitsController < ApplicationController
         trip: @trip,
         transit: @transit,
         category: @category,
+        comment: "#{@transit.from}- #{@transit.to}",
         date: @transit.start_time
       )
       redirect_to trip_path(@trip)

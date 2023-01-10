@@ -22,6 +22,7 @@ class RentalsController < ApplicationController
         trip: @trip,
         rental: @rental,
         category: @category,
+        comment: "Car Rental",
         date: @rental.start_time
       )
       redirect_to trip_path(@trip)

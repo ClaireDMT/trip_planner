@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :trip_users, dependent: :destroy
   has_many :trips, through: :trip_users
+  has_many :items, dependent: :destroy
   has_one_attached :photo
 
   def future_trips

@@ -23,6 +23,7 @@ class LodgingsController < ApplicationController
         trip: @trip,
         lodging: @lodging,
         category: @category,
+        comment: @lodging.name,
         date: @lodging.start_time
       )
       redirect_to trip_path(@trip)
