@@ -67,13 +67,13 @@ p "Trips created"
 
 category = Category.find_by(name: "Lodging")
 lodging = Lodging.create(
-  name: "El Tesorillo",
-  link: "https://www.airbnb.com/rooms/15694960?adults=2&children=0&infants=0&location=Moj%C3%A1car%2C%20Espa%C3%B1a&pets=0&check_in=2023-05-19&check_out=2023-05-24&federated_search_id=0e84c867-88cd-41fe-8268-2909f10edfb9&source_impression_id=p3_1671531217_LSqZyIDDWAJ6yXrH",
+  name: "La Isla Bonita - Mojacar house on the hill",
+  link: "https://www.airbnb.com/rooms/34787366?source_impression_id=p3_1673386138_Vq7eapbCbKjfK9Wb",
   start_time: "Sun, 22 Jan 2023",
   end_time: "Mon, 30 Jan 2023",
-  address: "Guájar-Alto, Andalucía, Spain",
+  address: "Mojácar, Almería 04638, Spain",
   trip:,
-  price_cents: 200
+  price_cents: 397.60
 )
 
 
@@ -83,18 +83,18 @@ Expense.create!(
   lodging:,
   category:,
   date: lodging.start_time,
-  price_cents: 200,
+  price_cents: 397.60,
   comment: lodging.name
 )
 
 lodging = Lodging.create(
-  name: "La Isla Bonita - Mojacar house on the hill",
-  link: "https://www.airbnb.com/rooms/34787366?adults=2&location=Moj%C3%A1car%2C%20Espa%C3%B1a&check_in=2023-01-21&check_out=2023-01-30&federated_search_id=742f3b5f-a8ab-4d58-93c9-d26ad370da64&source_impression_id=p3_1671530118_LfPkPNI%2FepXf%2BKGK",
-  start_time: "Mond, 30 Jan 2023",
+  name: "El Tesorillo Secluded mountain house",
+  link: "https://www.airbnb.com/rooms/15694960?adults=1&children=0&infants=0&location=motril&pets=0&check_in=2023-05-22&check_out=2023-05-27&federated_search_id=dfca262c-89fa-4422-9032-82621fc8221f&source_impression_id=p3_1673386253_B9%2Fsqv1y0Q3WyC%2FV",
   end_time: "Tues, 07 Feb 2023",
-  address: "Mojácar, Almería, Spain",
+  start_time: "Mon, 30 Jan 2023",
+  address: "Guájar-Alto, Andalucía, Spain",
   trip:,
-  price_cents: 100,
+  price_cents: 388
 )
 
 Expense.create!(
@@ -103,27 +103,88 @@ Expense.create!(
   lodging:,
   category:,
   date: lodging.start_time,
-  price_cents: 100,
+  price_cents: 388,
   comment: lodging.name
 )
 
-# for test
 
-lodging_jesus = Lodging.create(
-  name: "El BLALA",
-  link: "https://www.airbnb.com/rooms/15694960?adults=2&children=0&infants=0&location=Moj%C3%A1car%2C%20Espa%C3%B1a&pets=0&check_in=2023-05-19&check_out=2023-05-24&federated_search_id=0e84c867-88cd-41fe-8268-2909f10edfb9&source_impression_id=p3_1671531217_LSqZyIDDWAJ6yXrH",
-  start_time: "Mond, 01 Jan 2023",
-  end_time: "Tues, 02 Jan 2023",
-  address: "Cordoba, Andalucía, Spain",
+lodging = Lodging.create(
+  name: "Aljibes de las Azucenas I",
+  link: "https://www.airbnb.com/rooms/696782559821972683?source_impression_id=p3_1673386567_KS7sDs54HxquAQUj",
+  start_time: "Tues, 07 Feb 2023",
+  end_time: "Sat, 11 Feb 2023",
+  address: "Placeta Cristo Azucenas Bajo A, Granada, Andalucía 18010, Spain",
   trip:,
-  price_cents: 50
+  price_cents: 253
 )
 
 Expense.create!(
-  trip: trip2,
-  lodging: lodging_jesus,
+  user: yannick,
+  trip:,
+  lodging:,
   category:,
-  date: lodging_jesus.start_time,
-  price_cents: 50,
-  comment: lodging_jesus.name
+  date: lodging.start_time,
+  price_cents: 253,
+  comment: lodging.name
+)
+
+lodging = Lodging.create(
+  name: "Cozy apartment perfect for couples and families",
+  link: "https://www.airbnb.com/rooms/24026540?source_impression_id=p3_1673386948_MylGWJYAMmMs3%2Bel",
+  start_time: "Sat, 11 Feb 2023",
+  end_time: "Frid, 17 Feb 2023",
+  address: "Calle Antonio Susillo, 46 1º A, Sevilla, Andalucía 41002, Spain",
+  trip:,
+  price_cents: 438.53
+)
+
+Expense.create!(
+  user: claire,
+  trip:,
+  lodging:,
+  category:,
+  date: lodging.start_time,
+  price_cents: 438.53,
+  comment: lodging.name
+)
+
+lodging = Lodging.create(
+  name: "Cozy house near metro and Sevilla FC Stadium",
+  link: "https://www.airbnb.com/rooms/599651211796083039?source_impression_id=p3_1673387186_5PKUbCgpmf4jvUDF",
+  start_time: "Fri, 17 Feb 2023",
+  end_time: "Frid, 24 Feb 2023",
+  address: "Calle Antonio Ballesteros, 1, 41005 SEVILLA, ESPAÑA",
+  trip:,
+  price_cents: 490.80
+)
+
+Expense.create!(
+  user: claire,
+  trip:,
+  lodging:,
+  category:,
+  date: lodging.start_time,
+  price_cents: 490.80,
+  comment: lodging.name
+)
+
+transit = Transit.create(
+  start_time: "Sun, 22 Jan 2023 06:15",
+  end_time: "Sun, 22 Jan 2023 09:45",
+  transport_type: 0,
+  paid: true,
+  from: "Berlin",
+  to: "Malaga",
+  trip:
+)
+
+category = Category.find_by(name: "Flight")
+
+Expense.create!(
+  user: claire,
+  trip:,
+  transit:,
+  category:,
+  date: transit.start_time,
+  price_cents: 151.96
 )
