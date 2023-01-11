@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :rentals, only: %i[new create]
     resources :places, only: %i[new create]
     resources :expenses, only: %i[index new create]
+    resources :items, only: %i[index new create]
 
     member do
       get :map
@@ -21,4 +22,5 @@ Rails.application.routes.draw do
   resources :lodgings, only: %i[edit update delete]
   resources :transits, only: %i[edit update delete]
   resources :rentals, only: %i[edit update delete]
+  resources :items, only: %i[edit update delete]
 end

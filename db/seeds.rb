@@ -185,6 +185,7 @@ Expense.create!(
   trip:,
   transit:,
   category:,
+  comment: "#{transit.from}- #{transit.to}",
   date: transit.start_time,
   price_cents: 151.96
 )
