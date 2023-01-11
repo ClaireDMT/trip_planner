@@ -83,3 +83,14 @@ ul {
 .radius-8 {
   border-radius: 8px;
 }
+
+.form-control {
+  color: $blue;
+  background-color: #e7e9ec;
+  border: none;
+  border-radius: 8px;
+}
+
+.form-control.is-valid {
+  border-color: transparent;
+}

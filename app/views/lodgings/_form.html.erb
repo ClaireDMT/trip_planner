@@ -1,16 +1,15 @@
-<div class="container">
+<div class="container py-3 px-3">
   <%= simple_form_for [@trip, @lodging], data: { controller: 'flatpickr' } do |f| %>
-    <%= f.input :name %>
-    <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
-    <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
-    <%= f.input :link %>
-    <%= f.input :address %>
-    <%= f.input :price_cents %>
-    <%= f.input :price_per_night_cents %>
-    <%= f.input :paid %>
-    <%= f.input :attachments, as: :file, input_html: { multiple: true } %>
+    <%= f.input :name, label: false, placeholder: "name" %>
+    <%= f.input :start_time, label: false,  placeholder: "Date of arrival", as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+    <%= f.input :end_time, label: false,  placeholder: "Date of departure", as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
+    <%= f.input :link, label: false, placeholder: "url" %>
+    <%= f.input :address, label: false, placeholder: "address" %>
+    <%= f.input :price_cents, label: false, placeholder: "price in total" %>
+    <%= f.input :paid, label: false, placeholder: "paid" %>
+    <%= f.input :attachments, label: false, placeholder: "paid", as: :file, input_html: { multiple: true } %>
     <div class="text-center">
-      <%= f.submit "Add", class: "btn btn-blue" %>
+      <%= f.submit "Add", class: "btn btn-blue btn-large" %>
     </div>
   <% end %>
 </div>

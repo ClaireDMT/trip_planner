@@ -27,3 +27,6 @@ application.register("toggle-packed", TogglePackedController)
 
 import ScrollTo from 'stimulus-scroll-to'
 application.register('scroll-to', ScrollTo)
+
+import Reveal from 'stimulus-reveal-controller'
+application.register('reveal', Reveal)
