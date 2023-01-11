@@ -24,3 +24,6 @@ application.register("toggle-map", ToggleMapController)
 
 import TogglePackedController from "./toggle_packed_controller"
 application.register("toggle-packed", TogglePackedController)
+
+import ScrollTo from 'stimulus-scroll-to'
+application.register('scroll-to', ScrollTo)

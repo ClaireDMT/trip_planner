@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "show_content" do %>
   <%= render "show_banner", trip: @trip %>
 
-  <div class="show_tabs" data-controller="tabs">
+  <div class="show_tabs sticky-top" data-controller="tabs">
     <ul class="nav nav-tabs container pt-4" id="tripShow" role="tablist">
       <li class="nav-item" role="presentation">
         <%= link_to "Overview", overview_trip_path(@trip), class: "active nav-link",

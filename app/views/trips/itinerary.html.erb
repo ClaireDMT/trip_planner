@@ -1,14 +1,14 @@
 <%= turbo_frame_tag :items do %>
-  <div class="day-list d-flex overflow-scroll py-3">
+  <div class="day-list d-flex overflow-scroll py-3 sticky">
     <% @days.each do |day| %>
       <div class="day">
-        <span><%= day.strftime("%a %d/%m") %></span>
+      <%= link_to day.strftime("%a %d/%m"), "##{day.strftime("%d-%m")}", data: {controller: "scroll-to"} %>
       </div>
     <% end %>
   </div>
   <ul class="itinerary-days">
     <% @days_with_bookings.each do |hash_day| %>
-      <li class="bg-white mb-4 py-4" >
+      <li class="bg-white mb-4 py-4" id="<%= hash_day[:day].strftime("%d-%m") %>" >
         <div class="container px-4">
           <h2 class="fw-bold mb-4"><%= hash_day[:day].strftime("%a %d/%m") %></h2>
             <% if hash_day[:lodging] %>
