@@ -21,3 +21,6 @@ application.register("tabs", TabsController)
 
 import ToggleMapController from "./toggle_map_controller"
 application.register("toggle-map", ToggleMapController)
+
+import TogglePackedController from "./toggle_packed_controller"
+application.register("toggle-packed", TogglePackedController)

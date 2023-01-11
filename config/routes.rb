@@ -22,5 +22,9 @@ Rails.application.routes.draw do
   resources :lodgings, only: %i[edit update delete]
   resources :transits, only: %i[edit update delete]
   resources :rentals, only: %i[edit update delete]
-  resources :items, only: %i[edit update delete]
+  resources :items, only: %i[edit update delete] do
+    member do
+      get :toggle_packed
+    end
+  end
 end

@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[edit update]
+  before_action :set_item, only: %i[edit update toggle_packed]
 
   def index
     @trip = Trip.includes(:items).find(params[:trip_id])
@@ -22,6 +22,14 @@ class ItemsController < ApplicationController
   def update
     @item.update(item_params)
     redirect_to trip_path(@item.trip)
+  end
+
+  def toggle_packed
+    @item.update(packed: !@item.packed)
+    respond_to do |format|
+      format.html { redirect_to trip_path(@item.trip) }
+      format.text { render partial: "packed", locals: {item: @item}, formats: [:html] }
+    end
   end
 
   private
