@@ -4,6 +4,11 @@ class ItemsController < ApplicationController
   def index
     @trip = Trip.includes(:items).find(params[:trip_id])
     @items = @trip.items
+    if params[:sort] == "status"
+      @items = @items.group_by(&:packed)
+    elsif params[:sort] == "category"
+      @items = @items.group_by(&:category)
+    end
   end
 
   def create

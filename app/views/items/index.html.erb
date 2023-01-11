@@ -3,32 +3,24 @@
   <div class="">
     <%= render "new_form", trip: @trip, item: Item.new  %>
   </div>
-  <ul class="checklist list-section bg-white py-3">
-    <% @items.each do |item| %>
-      <%= turbo_frame_tag "item_#{item.id}"  do %>
-        <div class="container">
-          <li class="p-0 bg-light-gray d-flex px-3 py-2 justify-content-start align-items-center">
-            <div class="item-packed me-3" data-controller="toggle-packed" data-toggle-packed-item-value="<%= item.id %>">
-              <%= render "packed", item: item %>
-            </div>
-            <%= link_to edit_item_path(item), class: "edit-link", data: {bs_toggle: "modal", bs_target: "#edit-item-#{item.id}" } do  %>
-                <div class="d-flex py-2 justify-content-between align-items-center">
-                  <div class="item-left">
-                    <div class="d-flex align-items-center justify-content-center">
-                      <div class="ms-4">
-                        <p class="fw-bold mb-0"><%= item.name %></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item-right">
-                    <%= cl_image_tag item.user.photo.key, class: "avatar avatar-bordered" %>
-                  </div>
-                </div>
-            <% end %>
-            <%= render "edit_modal", item: item %>
-          </li>
-        </div>
+
+  <ul class="checklist list-section bg-white py-3 mt-3 container">
+    <div class="checklist-filter d-flex justify-content-end align-items-center container mb-3">
+      <%= link_to "Un/Packed", trip_items_path(sort: "status"), class: "btn" %>
+      <%= link_to "Category", trip_items_path(sort: "category"), class: "btn" %>
+      <i class="fa-solid fa-filter text-blue"></i>
+    </div>
+    <% if params[:sort] %>
+      <% @items.each do |key, items| %>
+        <% if params[:sort] == "status" %>
+          <h2 class="ms-3"><%= key ? "Packed" : "Unpacked" %></h2>
+        <% else %>
+          <h2 class="ms-3"><%= key %></h2>
+        <% end %>
+        <%= render "list_items", items: items %>
       <% end %>
+    <% else %>
+      <%= render "list_items", items: @items %>
     <% end %>
   </ul>
 <% end %>
