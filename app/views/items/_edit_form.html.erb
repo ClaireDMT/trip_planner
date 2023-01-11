@@ -1,0 +1,9 @@
+  <%= simple_form_for item, html: { class: ""} do |f| %>
+      <%= f.input :name, label: false, placeholder: "Charger, tent, etc" %>
+      <%= f.association :user, collection: item.trip.users, include_blank: false , label: false, label_method: :username,  value_method: :id %>
+      <%= f.input :category, collection: Item::CATEGORIES, label: false, wrapper_html: {style: "flex-grow: 1; margin-right: 8px"} %>
+      <div class="text-center">
+        <%= f.submit "save", class: "btn btn-blue ml-3 mb-3" %>
+      </div>
+    </div>
+  <% end %>

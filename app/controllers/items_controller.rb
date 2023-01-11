@@ -20,14 +20,14 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @items.update(item_params)
+    @item.update(item_params)
     redirect_to trip_path(@item.trip)
   end
 
   private
 
   def set_item
-    @item = item.includes(:user, :trip).find(params[:id])
+    @item = Item.includes(:user, [trip: [trip_users: :user]]).find(params[:id])
   end
 
   def item_params
