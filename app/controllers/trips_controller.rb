@@ -12,6 +12,13 @@ class TripsController < ApplicationController
 
   def itinerary
     @days = @trip.start_date.to_datetime..@trip.end_date.to_datetime
+    @days_with_bookings = @days.map do |day|
+      lodging = @trip.lodgings.where("? between start_time AND end_time", day).first
+      rental = @trip.rentals.where("? between start_time AND end_time", day).first
+      transits = @trip.transits.where("start_time between ? AND ?", day, day + 1.day)
+      places = @trip.places.where("date = ?", day)
+      { day:, lodging:, rental:, transits:, places: }
+    end
   end
 
   private

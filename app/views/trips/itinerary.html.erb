@@ -7,15 +7,33 @@
     <% end %>
   </div>
   <ul class="itinerary-days">
-    <% @days.each do |day| %>
+    <% @days_with_bookings.each do |hash_day| %>
       <li class="bg-white mb-4 py-4" >
         <div class="container px-4">
-          <h2 class="fw-bold mb-4"><%= day.strftime("%a %d/%m") %></h2>
-          <% lodging = @trip.lodgings.where("? between start_time AND end_time", day).first %>
-            <% if lodging %>
+          <h2 class="fw-bold mb-4"><%= hash_day[:day].strftime("%a %d/%m") %></h2>
+            <% if hash_day[:lodging] %>
               <div class="bg-blue ps-2 py-1 radius-8 mb-2">
-                <p class="text-white mb-0"><%= lodging.name %></p>
+                <p class="text-white mb-0"><%= hash_day[:lodging].name %></p>
               </div>
+            <% end %>
+            <% if hash_day[:transits] %>
+              <% hash_day[:transits].each do |transit| %>
+                <div class="bg-yellow ps-2 py-1 radius-8 mb-2">
+                  <p class="text-blue mb-0"><%= transit.from %> <%= transit.start_time.strftime("%H:%M") %> - <%= transit.to %> <%= transit.start_time.strftime("%H:%M") %></p>
+                </div>
+              <% end %>
+            <% end %>
+            <% if hash_day[:rental] %>
+              <div class="bg-grey ps-2 py-1 radius-8 mb-2">
+                <p class="text-blue mb-0">Rental<%= hash_day[:rental].address %></p>
+              </div>
+            <% end %>
+            <% if hash_day[:places] %>
+              <% hash_day[:places].each do |place| %>
+                <div class="bg-light-gray ps-2 py-1 radius-8 mb-2">
+                  <p class="text-yellow mb-0"><%= place.name %> <<%= place.address %></p>
+                </div>
+              <% end %>
             <% end %>
           <%= simple_form_for [@trip, Place.new], html: { class: "mt-2"} do |f| %>
             <%= f.input :address, placeholder: "Add a place", label: false %>
@@ -25,3 +43,4 @@
     <% end %>
   </ul>
 <% end %>
+<%= console %>
