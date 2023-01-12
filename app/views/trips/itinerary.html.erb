@@ -2,7 +2,8 @@
   <div class="day-list d-flex overflow-scroll py-3 sticky">
     <% @days.each do |day| %>
       <div class="day">
-      <%= link_to day.strftime("%a %d/%m"), "##{day.strftime("%d-%m")}", data: {controller: "scroll-to"} %>
+      <%= link_to day.strftime("%a %d/%m"), "##{day.strftime("%d-%m")}", data: {controller: "scroll-to",   scroll_to_offset_value: "150"
+} %>
       </div>
     <% end %>
   </div>
