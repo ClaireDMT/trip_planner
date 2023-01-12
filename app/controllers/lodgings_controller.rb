@@ -9,7 +9,7 @@ class LodgingsController < ApplicationController
   def update
     @trip = @lodging.trip
     @lodging.update(lodging_params)
-    redirect_to restaurant_path(@trip)
+    redirect_to trip_path(@trip)
   end
 
   def create
