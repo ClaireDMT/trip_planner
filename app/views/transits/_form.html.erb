@@ -1,17 +1,19 @@
 <div class="container">
+  <h2 class="mb-2">Add a new transit</h2>
+
   <%= turbo_frame_tag "transits_turbo_frame" do %>
 
     <%= simple_form_for [trip, transit], data: { controller: 'flatpickr', flatpickr_time_value: true } do |f| %>
-      <%= f.input :from, input_html: { data: { address_autocomplete_target: "address"}, class: "d-none" },
+      <%= f.input :from, label: false, input_html: { data: { address_autocomplete_target: "address"}, class: "d-none" },
                          wrapper_html: { data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
-      <%= f.input :to, input_html: { data: { address_autocomplete_target: "address"}, class: "d-none" },
+      <%= f.input :to, label: false, input_html: { data: { address_autocomplete_target: "address"}, class: "d-none" },
                          wrapper_html: { data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
-      <%= f.input :transport_type, collection: Transit.transport_types.keys %>
-      <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
-      <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
-      <%= f.input :price_cents %>
+      <%= f.input :transport_type, label: false, collection: Transit.transport_types.keys, prompt: "Select a type" %>
+      <%= f.input :start_time, label: false, as: :string, input_html: { data: { flatpickr_target: "startTime" }, placeholder: "Select departure date & time" } %>
+      <%= f.input :end_time, label: false, as: :string, input_html: { data: { flatpickr_target: "endTime" }, placeholder: "Select arrival date & time" } %>
+      <%= f.input :price_cents, label: false, placeholder: "price" %>
       <%= f.input :paid %>
-      <%= f.input :comment %>
+      <%= f.input :comment, label: false, placeholder: "comment" %>
       <%= f.input :attachments, as: :file, input_html: { multiple: true } %>
       <%= f.submit "Add", class: "btn btn-blue" %>
     <% end %>

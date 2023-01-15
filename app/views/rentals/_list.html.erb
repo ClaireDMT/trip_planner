@@ -1,11 +1,16 @@
-<section class="list-section mb-4">
-  <div class="d-flex justify-content-between align-items-start">
-    <h2 class="mb-3 text-blue">Rentals</h3>
-    <%= link_to new_trip_rental_path(trip), data: { turbo_frame: "rentals_turbo_frame" } do  %>
+<section class="list-section mb-4"  data-controller="reveal" data-reveal-hidden-class="d-none">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex justify-content-start align-items-center">
+      <button class="btn text-blue" data-action="click->reveal#toggle" type="button" ><i class="fa-solid fa-caret-down me-3" ></i></button>
+      <h2 class="mb-0 text-blue">Rentals</h3>
+    </div>
+    <%= link_to new_trip_rental_path(@trip), class: "button-action", data: {bs_toggle: "modal", bs_target: "#new-rental" } do  %>
       <span class="text-yellow fs-4"><i class="fa-solid fa-plus"></i></span>
     <% end %>
   </div>
-  <%= turbo_frame_tag "rentals_turbo_frame" do %>
+
+  <div class="list-rentals d-none" data-reveal-target="item" >
+  <%#= turbo_frame_tag "rentals_turbo_frame" do %>
     <% if trip.rentals.empty? %>
       <p class="text-gray font-italic mb-0">No rentals yet</p>
     <% else %>
@@ -24,5 +29,6 @@
         <% end %>
       </ul>
     <% end %>
-  <% end %>
+  <%# end %>
+  </div>
 </section>

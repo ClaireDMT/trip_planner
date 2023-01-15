@@ -1,5 +1,6 @@
 <div class="container py-3 px-3">
-  <%= simple_form_for [@trip, @lodging], data: { controller: 'flatpickr' } do |f| %>
+  <h2 class="mb-2">Add a new lodging</h2>
+  <%= simple_form_for [trip, lodging], data: { controller: 'flatpickr' } do |f| %>
     <%= f.input :name, label: false, placeholder: "name" %>
     <%= f.input :start_time, label: false,  placeholder: "Date of arrival", as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
     <%= f.input :end_time, label: false,  placeholder: "Date of departure", as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>

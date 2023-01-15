@@ -1,0 +1,15 @@
+<div class="modal fade" id="new-<%= type %>" tabindex="-1" aria-labelledby="createItem" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4">
+      <% if type == "lodging" %>
+        <%= render form, lodging: item, trip: trip %>
+      <% elsif type == "rental" %>
+        <%= render form, rental: item, trip: trip %>
+      <% elsif type == "transit" %>
+        <%= render form, transit: item, trip: trip %>
+      <% else %>
+        <%= render form, place: item, trip: trip %>
+      <% end %>
+    </div>
+  </div>
+</div>

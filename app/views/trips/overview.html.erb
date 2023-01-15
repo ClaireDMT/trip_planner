@@ -5,31 +5,31 @@
         <h3 class="mb-3 text-blue">Reservations and attachments</h3>
         <ul class="add-list">
           <li>
-            <div class="button-action" role="button">
+            <%= link_to new_trip_transit_path(@trip), class: "button-action", data: {bs_toggle: "modal", bs_target: "#new-transit" } do  %>
               <i class="fa-solid fa-train-subway"></i>
               <span>Transport</span>
-            </div>
+            <% end %>
           </li>
           <div class="separator"></div>
           <li>
-            <div class="button-action" role="button">
+            <%= link_to new_trip_lodging_path(@trip), class: "button-action", data: {bs_toggle: "modal", bs_target: "#new-lodging" } do  %>
               <i class="fa-solid fa-bed"></i>
               <span>Lodging</span>
-            </div>
+            <% end %>
           </li>
           <div class="separator"></div>
           <li>
-            <div class="button-action" role="button">
+            <%= link_to new_trip_rental_path(@trip), class: "button-action", data: {bs_toggle: "modal", bs_target: "#new-rental" } do  %>
               <i class="fa-solid fa-car"></i>
               <span>Rental</span>
-            </div>
+            <% end %>
           </li>
           <div class="separator"></div>
           <li>
-            <div class="button-action" role="button">
+            <%= link_to new_trip_place_path(@trip), class: "button-action", data: {bs_toggle: "modal", bs_target: "#new-place" } do  %>
               <i class="fa-solid fa-landmark"></i>
               <span>Activity</span>
-            </div>
+            <% end %>
           </li>
           <div class="separator"></div>
           <li>
@@ -40,6 +40,10 @@
           </li>
         </ul>
 
+        <%= render "shared/new_modal", type: "lodging", item: Lodging.new, trip: @trip, form: "lodgings/form" %>
+        <%= render "shared/new_modal", type: "rental", item: Rental.new, trip: @trip, form: "rentals/form" %>
+        <%= render "shared/new_modal", type: "transit", item: Transit.new, trip: @trip, form: "transits/form" %>
+        <%= render "shared/new_modal", type: "place", item: Place.new, trip: @trip, form: "places/form" %>
       </section>
 
       <%= render "lodgings/list", trip: @trip %>
