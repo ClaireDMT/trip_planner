@@ -18,6 +18,6 @@ class ExpensesController < ApplicationController
   end
 
   def expense_params
-    params.require(:expense).permit(:user_id, :category_id, :split, :date, :comment)
+    params.require(:expense).permit(:user_id, :price_cents, :category_id, :split, :date, :comment)
   end
 end
