@@ -14,7 +14,7 @@ export default class extends Controller {
     if (this.hasEndTimeTarget) {
       flatpickr(this.startTimeTarget, {
         enableTime: this.timeValue,
-        dateFormat: "d-m-Y H:i",
+        // dateFormat: "d-m-Y H:i",
         mode: 'range',
         "plugins": [new rangePlugin({
           input: this.endTimeTarget
@@ -22,7 +22,7 @@ export default class extends Controller {
       });
     } else {
       flatpickr(this.startTimeTarget, {
-        dateFormat: "d-m-Y"
+        // dateFormat: "d-m-Y"
       });
     }
   }
