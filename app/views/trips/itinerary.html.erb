@@ -20,7 +20,7 @@
             <% if hash_day[:transits] %>
               <% hash_day[:transits].each do |transit| %>
                 <div class="bg-yellow ps-2 py-1 radius-8 mb-2">
-                  <p class="text-blue mb-0"><%= transit.from %> <%= transit.start_time.strftime("%H:%M") %> - <%= transit.to %> <%= transit.start_time.strftime("%H:%M") %></p>
+                  <p class="text-blue mb-0"><%= transit.from %> <%= transit.start_time.strftime("%H:%M") %> - <%= transit.to %> <%= transit.end_time.strftime("%H:%M") %></p>
                 </div>
               <% end %>
             <% end %>
