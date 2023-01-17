@@ -1,8 +1,11 @@
   <div class="container">
+    <% if expense.persisted? %>
+      <p class="fw-bold mb-2"><%= expense.comment %></p>
+    <% end %>
     <%= simple_form_for [trip, expense], data: { controller: 'flatpickr' } do |f| %>
-      <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
-      <%= f.input :price_cents %>
-      <%= f.association :user, collection: @expense.trip.users, label_method: :username,  value_method: :id, include_blank: false %>
+      <%= f.input :date, label: false, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+      <%= f.input :price_cents, label: false %>
+      <%= f.association :user, label: false, collection: @expense.trip.users, label_method: :username,  value_method: :id, include_blank: false %>
       <div class="text-center">
         <%= f.submit "Add", class: "btn btn-blue" %>
       </div>
