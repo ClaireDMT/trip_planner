@@ -4,19 +4,19 @@
   <div class="show_tabs sticky-top" data-controller="tabs">
     <ul class="nav nav-tabs container pt-4" id="tripShow" role="tablist">
       <li class="nav-item" role="presentation">
-        <%= link_to "Overview", overview_trip_path(@trip), class: "active nav-link",
+        <%= link_to "Overview", overview_trip_path(@trip), class: "#{'active' if params[:frame] == '' } nav-link",
                     data: { turbo_frame: :items, tabs_target: "tab", action: "click->tabs#toggle" } %>
       </li>
       <li class="nav-item" role="presentation">
-        <%= link_to "Itinerary", itinerary_trip_path(@trip), class: "nav-link",
+        <%= link_to "Itinerary", itinerary_trip_path(@trip), class: "#{'active' if params[:frame] == 'itinerary' }nav-link",
                     data: { turbo_frame: :items, tabs_target: "tab", action: "click->tabs#toggle" } %>
       </li>
       <li class="nav-item" role="presentation">
-        <%= link_to "Expenses", trip_expenses_path(@trip), class: "nav-link",
+        <%= link_to "Expenses", trip_expenses_path(@trip), class: "#{'active' if params[:frame] == 'expenses' } nav-link",
                     data: { turbo_frame: :items, tabs_target: "tab", action: "click->tabs#toggle" } %>
       </li>
       <li class="nav-item" role="presentation">
-        <%= link_to "List", trip_items_path(@trip), class: "nav-link",
+        <%= link_to "List", trip_items_path(@trip), class: "#{'active' if params[:frame] == 'list' } nav-link",
                     data: { turbo_frame: :items, tabs_target: "tab", action: "click->tabs#toggle" } %>
       </li>
     </ul>

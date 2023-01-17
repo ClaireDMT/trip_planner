@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
     # @category = Category.find_by(name: "Lodging")
 
     if @item.save!
-      redirect_to trip_path(@trip)
+      redirect_to trip_items_path(@trip)
     else
       render "trips/show"
     end
@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
 
   def update
     @item.update(item_params)
-    redirect_to trip_path(@item.trip)
+    redirect_to trip_items_path(@trip)
   end
 
   def toggle_packed

@@ -8,7 +8,7 @@ class ExpensesController < ApplicationController
 
   def update
     @expense.update(expense_params)
-    redirect_to trip_path(@expense.trip)
+    redirect_to trip_expenses_path(@expense.trip)
   end
 
   private
