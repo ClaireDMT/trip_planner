@@ -7,6 +7,7 @@ class TransitsController < ApplicationController
   end
 
   def update
+    @trip = @transit.trip
     @transit.update(transit_params)
     redirect_to trip_path(@transit.trip)
   end
@@ -24,7 +25,7 @@ class TransitsController < ApplicationController
         category: @category,
         comment: "#{@transit.from}- #{@transit.to}",
         price_cents: @transit.price_cents,
-        date: @transit.start_time
+        date: Date.today
       )
       redirect_to trip_path(@trip)
     else

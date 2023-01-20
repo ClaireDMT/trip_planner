@@ -1,1 +1,3 @@
-<%= render "form", trip: @trip, transit: @transit  %>
+<%= turbo_frame_tag "transits_turbo_frame" do %>
+  <%= render "form", trip: @trip, transit: @transit  %>
+<% end %>

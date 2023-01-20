@@ -24,7 +24,7 @@ class LodgingsController < ApplicationController
         lodging: @lodging,
         category: @category,
         comment: @lodging.name,
-        date: @lodging.start_time
+        date: Date.today
       )
       redirect_to trip_path(@trip)
     else

@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "transit_#{@transit.id}" do %>
+  <div class="bg-gray mb-3 radius-8">
+    <%= render "form", trip: @trip, transit: @transit  %>
+  </div>
+<% end %>

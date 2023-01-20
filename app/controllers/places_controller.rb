@@ -22,7 +22,7 @@ class PlacesController < ApplicationController
         rental: @place,
         category: @category,
         comment: @place.name,
-        date: @rental.start_time
+        date: Date.today
       )
       redirect_to trip_path(@trip)
     else
