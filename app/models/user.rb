@@ -13,6 +13,10 @@ class User < ApplicationRecord
     trips.where("start_date >= now()")
   end
 
+  def future_and_current_trips
+    trips.where("start_date <= now() AND end_date > now()")
+  end
+
   def current_trip
     trips.where("start_date <= now() AND end_date > now()").first
   end
