@@ -1,6 +1,11 @@
 <div class="container pt-5">
   <h1 class="text-blue" ><%= current_user.username.capitalize %>,
-    <span style = "display: block;">your next trip is in <%= current_user.next_trip_in %> days.</span>
+    <% if current_user.next_trip %>
+      <span style = "display: block;">your next trip is in <%= current_user.next_trip_in %> days.</span>
+    <% end %>
+    <% if current_user.current_trip %>
+      <span style = "display: block;">how is <%= current_user.current_trip.name  %>?</span>
+    <% end %>
   </h1>
 
   <ul class="mt-4">
