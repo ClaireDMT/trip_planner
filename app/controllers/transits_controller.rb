@@ -23,7 +23,7 @@ class TransitsController < ApplicationController
         trip: @trip,
         transit: @transit,
         category: @category,
-        comment: "#{@transit.from}- #{@transit.to}",
+        comment: "#{@transit.from.split(",").first}- #{@transit.to.split(",").first}",
         price_cents: @transit.price_cents,
         date: Date.today
       )
