@@ -7,6 +7,8 @@
         <%= render form, rental: item, trip: trip %>
       <% elsif type == "transit" %>
         <%= render form, transit: item, trip: trip %>
+      <% elsif type == "expense" %>
+        <%= render form, expense: item, trip: trip %>
       <% else %>
         <%= render form, place: item, trip: trip %>
       <% end %>

@@ -11,6 +11,17 @@ class ExpensesController < ApplicationController
     redirect_to trip_expenses_path(@expense.trip)
   end
 
+  def create
+    @trip = Trip.find(params[:trip_id])
+    @expense = Expense.new(expense_params)
+    @expense.trip = @trip
+    if @expense.save
+      redirect_to trip_expenses_path(@trip)
+    else
+      render "new"
+    end
+  end
+
   private
 
   def set_expense

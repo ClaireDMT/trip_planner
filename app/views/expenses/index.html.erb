@@ -9,7 +9,12 @@
   <ul class="budget list-section">
     <div class="container py-3 d-flex justify-content-between align-items-center">
       <h1>Expenses</h1>
-      <i class="fa-solid fa-chart-simple"></i>
+      <div class="d-flex justify-content-between align-items-center">
+        <%= link_to new_trip_expense_path(@trip), class: "button-action", data: {bs_toggle: "modal", bs_target: "#new-expense" } do  %>
+          <span class="text-yellow fs-4"><i class="fa-solid fa-plus"></i></span>
+        <% end %>
+        <i class="ms-3 text-yellow fa-solid fa-chart-simple"></i>
+      </div>
     </div>
     <% @expenses.each do |exp| %>
       <%= turbo_frame_tag "expense_#{exp.id}"  do %>
@@ -39,3 +44,5 @@
     <% end %>
   </ul>
 <% end %>
+
+<%= render "shared/new_modal", type: "expense", item: Expense.new, trip: @trip, form: "form" %>

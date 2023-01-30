@@ -10,7 +10,7 @@ CATEGORIES = [
   ["Flight", "fa-plane"],
   ["Lodging", "fa-bed"],
   ["Rental", "fa-car"],
-  ["Restaurant", "fa-ustensils"],
+  ["Restaurant", "fa-utensils"],
   ["Bar", "fa-wine-glass"],
   ["Museums", "fa-building-columns"],
   ["Groceries", "fa-basket-shopping"],

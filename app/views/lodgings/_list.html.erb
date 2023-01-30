@@ -8,7 +8,6 @@
       <span class="text-yellow fs-4"><i class="fa-solid fa-plus"></i></span>
     <% end %>
   </div>
-  <%#= turbo_frame_tag "lodgings_turbo_frame" do %>
   <div class="list-rentals d-none" data-reveal-target="item" >
     <% if trip.lodgings.empty? %>
       <p class="text-gray font-italic mb-0">No lodgings yet</p>
@@ -33,6 +32,4 @@
       </ul>
     <% end %>
   </div>
-  <%# end %>
-
 </section>
