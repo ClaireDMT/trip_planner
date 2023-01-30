@@ -3,6 +3,7 @@ class ExpensesController < ApplicationController
 
   def index
     @trip = Trip.includes(:expenses).find(params[:trip_id])
+    @share = @trip.share
     @expenses = @trip.expenses.order(date: :desc)
   end
 

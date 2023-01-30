@@ -13,6 +13,10 @@ class Trip < ApplicationRecord
     expenses.sum(:price_cents)
   end
 
+  def share
+    budget / users.count
+  end
+
   def balance
     query = "SELECT users.username, SUM(expenses.price_cents) FROM expenses
     INNER JOIN users ON expenses.user_id = users.id
