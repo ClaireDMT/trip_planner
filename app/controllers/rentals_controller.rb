@@ -21,6 +21,7 @@ class RentalsController < ApplicationController
       Expense.create(
         trip: @trip,
         rental: @rental,
+        user: current_user,
         category: @category,
         price_cents: @rental.price_cents,
         comment: "Car Rental",

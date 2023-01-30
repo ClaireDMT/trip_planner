@@ -21,9 +21,10 @@ class TransitsController < ApplicationController
     if @transit.save
       Expense.create(
         trip: @trip,
+        user: current_user,
         transit: @transit,
         category: @category,
-        comment: "#{@transit.from.split(",").first}- #{@transit.to.split(",").first}",
+        comment: "#{@transit.from.split(',').first}- #{@transit.to.split(',').first}",
         price_cents: @transit.price_cents,
         date: Date.today
       )

@@ -21,6 +21,7 @@ class LodgingsController < ApplicationController
     if @lodging.save
       Expense.create(
         trip: @trip,
+        user: current_user,
         lodging: @lodging,
         category: @category,
         comment: @lodging.name,

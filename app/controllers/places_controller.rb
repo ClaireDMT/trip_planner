@@ -19,6 +19,7 @@ class PlacesController < ApplicationController
     if @place.save
       Expense.create(
         trip: @trip,
+        user: current_user,
         rental: @place,
         category: @category,
         comment: @place.name,
