@@ -43,6 +43,5 @@
       <% end %>
     <% end %>
   </ul>
+  <%= render "shared/new_modal", type: "expense", item: Expense.new, trip: @trip, form: "form" %>
 <% end %>
-
-<%= render "shared/new_modal", type: "expense", item: Expense.new, trip: @trip, form: "form" %>
