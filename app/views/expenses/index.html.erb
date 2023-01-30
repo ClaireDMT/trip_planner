@@ -1,4 +1,4 @@
-<%= turbo_frame_tag :items do %>
+<%= turbo_frame_tag :items, target: "_top" do %>
   <div class="container budget_banner">
     <div class="d-flex justify-content-center align-items-baseline">
       <h1 class="mt-0 mb-3 ms-4 me-4"><%= @trip.budget %> €</h1>
@@ -28,7 +28,7 @@
         <li class="p-0">
           <%= link_to edit_expense_path(exp) do  %>
             <div class="container">
-              <div class="d-flex py-2 justify-content-between align-items-center">
+              <div class="position-relative d-flex py-2 justify-content-between align-items-center">
                 <div class="expense-left">
                   <div class="d-flex align-items-center justify-content-center">
                     <div class="expense-category">
@@ -40,8 +40,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="expense-right">
-                  <p class="mb-0"><%= exp.price_cents %>€</p>
+                <div class="expense-right text-center">
+                  <p class="mb-0 fw-bold text-gray"><%= exp.user.username[0].upcase %></p>
+                  <p class="mt-2 mb-0"><%= exp.price_cents %>€</p>
                 </div>
               </div>
             </div>

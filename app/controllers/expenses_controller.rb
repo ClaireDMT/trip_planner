@@ -17,7 +17,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.new(expense_params)
     @expense.trip = @trip
     if @expense.save
-      redirect_to trip_expenses_path(@trip)
+      redirect_to trip_expenses_path(@trip), status: :see_other
     else
       render "new"
     end
